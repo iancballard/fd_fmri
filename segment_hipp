@@ -1,0 +1,14 @@
+basedir = pwd;
+sub = dir('S_*');  % Edit the wildcard to select your subjects 
+hemis = {'lh', 'rh'};
+labelNos = {'17', '53'};
+for h=1:2
+    hemi = hemis{h};
+    label = labelNos{h};
+    for ns=1: length(sub)
+        cmd = ['mri_extract_label ' ...
+               basedir filesep sub(ns).name filesep 'mri' filesep 'aseg.mgz ' label ' ' ...
+               basedir filesep sub(ns).name filesep 'mri' filesep hemi '.asegHippo.mgz'];
+%         system(cmd);
+    end
+end
